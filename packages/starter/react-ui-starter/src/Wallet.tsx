@@ -16,6 +16,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Navigation } from './Navigation';
 import { Notification } from './Notification';
 
+import { SendLamportTransaction } from './SendLamportTransaction'
+
 export const Wallet: FC = () => {
     const network = WalletAdapterNetwork.Devnet;
     const endpoint = useMemo(() => clusterApiUrl(network), [network]);
@@ -53,6 +55,9 @@ export const Wallet: FC = () => {
             <WalletProvider wallets={wallets} onError={onError} autoConnect>
                 <WalletModalProvider>
                     <Navigation />
+                    <br/>
+                    <SendLamportTransaction myWallet={wallets}/>
+
                 </WalletModalProvider>
                 <Toaster position="bottom-left" reverseOrder={false} />
             </WalletProvider>
